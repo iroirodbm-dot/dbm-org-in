@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deaf Biblical Ministry | Empowering the Deaf Community in Nagaland</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4a6fa5;       /* Soft blue - trust, calm */
+      --accent: #d4a373;         /* Warm gold - hope, faith */
+      --dark: #2d2d2d;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    /* Header / Hero */
+    header {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+                  url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80') center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(212,163,115,0.25);
+    }
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(212,163,115,0.35); background: #e0b88a; }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: background 0.4s;
+    }
+    nav.scrolled { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .nav-links a {
+      margin-left: 2.5rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Sections */
+    section { padding: 8rem 0; }
+    .about, .impact { background: white; }
+    .mission {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+    .mission h2 { font-size: 3.2rem; margin-bottom: 1.5rem; color: var(--primary); }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      text-align: center;
+    }
+    .stat h3 { font-size: 3.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .stat p { font-size: 1.1rem; color: var(--gray); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease;
+    }
+    .card:hover { transform: translateY(-12px); }
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    .card-content { padding: 2rem; }
+    .card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+
+    /* CTA */
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+    }
+    .cta h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+    .footer-links a { color: #ccc; margin: 0 1rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3.2rem; }
+      .hero p { font-size: 1.3rem; }
+      nav .nav-links { display: none; } /* Add mobile menu if needed */
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container container">
+      <div class="logo">DBM</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#impact">Impact</a>
+        <a href="#programs">Programs</a>
+        <a href="#support">Support Us</a>
+        <a href="mailto:hello@dbm.org.in">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Deaf Biblical Ministry</h1>
+      <p>Empowering the Deaf Community in Nagaland Through Education, Faith, and Hope Since 1987</p>
+      <a href="mailto:hello@dbm.org.in" class="btn">Get in Touch</a>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="mission">
+        <h2>Our Mission</h2>
+        <p>Pioneering free education, vocational training, sign language development, and spiritual guidance for deaf children and adults in Nagaland. We nurture students to become responsible, contributing members of society — physically, mentally, and spiritually.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <h3>1987</h3>
+          <p>Year Established</p>
+        </div>
+        <div class="stat">
+          <h3>70+</h3>
+          <p>Deaf Students Enrolled</p>
+        </div>
+        <div class="stat">
+          <h3>200+</h3>
+          <p>Deaf Church Members</p>
+        </div>
+        <div class="stat">
+          <h3>3</h3>
+          <p>National Awards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="container">
+      <h2 style="text-align:center; font-size:3rem; margin-bottom:4rem; color:var(--primary);">What We Offer</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&q=80" alt="Deaf Education">
+          <div class="card-content">
+            <h3>Quality Education</h3>
+            <p>From pre-primary to grade 10, with focus on sign language, academics, and life skills — all provided free.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2b033f?auto=format&fit=crop&q=80" alt="Vocational Training">
+          <div class="card-content">
+            <h3>Vocational Training</h3>
+            <p>Skills in tailoring, crafts, computing, and more to enable independence and employment.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80" alt="Spiritual Ministry">
+          <div class="card-content">
+            <h3>Biblical Ministry & Church</h3>
+            <p>The only Deaf Church in Northeast India — nurturing faith, community, and spiritual growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="support">
+    <div class="container">
+      <h2>Support Our Mission</h2>
+      <p style="font-size:1.4rem; max-width:700px; margin:0 auto 2.5rem;">Help sponsor a deaf child's education, food, and future. Your generosity changes lives forever.</p>
+      <a href="mailto:donations@dbm.org.in" class="btn" style="background:white; color:var(--primary);">Donate or Sponsor Now</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:1.5rem;">Deaf Biblical Ministry • Naharbari, Dimapur, Nagaland • hello@dbm.org.in</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> •
+        <a href="#">Terms of Use</a>
+      </div>
+      <p style="margin-top:2rem; font-size:0.95rem; opacity:0.8;">© 2026 Deaf Biblical Ministry. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple scroll effect for navbar
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 100);
+    });
+  </script>
+</body>
+</html>
