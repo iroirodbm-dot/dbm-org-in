@@ -132,16 +132,14 @@
       word-break: break-word;
     }
 
-    .contact-card a:hover {
-      color: var(--accent);
-    }
-
     .contact-icon {
-      width: 24px;
-      height: 24px;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1.2rem;
       object-fit: contain;
-      vertical-align: middle;
-      transition: fill 0.3s ease, transform 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-card a:hover .contact-icon {
@@ -151,6 +149,12 @@
 
     .contact-card a {
       display: inline-block;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     /* Footer */
@@ -216,10 +220,11 @@
       <div class="contact-grid">
 
      <div class="contact-card">
-       <svg class="contact-icon" viewBox="0 0 24 24">
-         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-       </svg>
-       <h3>Address</h3>
+        <img
+          src="assets/images/icon-address.png"
+          alt="Address"
+          class="contact-icon"
+        <h3>Address</h3>
         <p>
           Ward 10, Lane 3<br>
           Naharbari<br>
@@ -229,7 +234,7 @@
       </div>
 
       <div class="contact-card">
-        <a href="mailto:hello@dbm.org.in" viewBox="0 0 24 24">
+        <a href="mailto:hello@dbm.org.in">
           <img
             src="assets/images/icon-email.png"
             alt="Email"
@@ -240,7 +245,7 @@
       </div>
 
       <div class="contact-card">
-        <a href="https://wa.me/916909150432" target="_blank" aria-label="WhatsApp" viewBox="0 0 24 24">
+        <a href="https://wa.me/916909150432" target="_blank" aria-label="WhatsApp">
           <img
             src="assets/images/icon-whatsapp.png"
             alt="WhatsApp"
@@ -251,7 +256,7 @@
       </div>
 
       <div class="contact-card">
-        <a href="https://facebook.com/p/Deaf-Biblical-Ministry-100064918891282/" target="_blank" aria-label="Facebook" viewBox="0 0 24 24">
+        <a href="https://facebook.com/p/Deaf-Biblical-Ministry-100064918891282/" target="_blank" aria-label="Facebook">
           <img
             src="assets/images/icon-facebook.png"
             alt="Facebook"
@@ -263,7 +268,7 @@
       </div>
 
       <div class="contact-card">
-        <a href="https://instagram.com/" target="_blank" aria-label="Instagram" viewBox="0 0 24 24">
+        <a href="https://instagram.com/" target="_blank" aria-label="Instagram">
           <img
             src="assets/images/icon-instagram.png"
             alt="Instagram"
@@ -274,7 +279,7 @@
       </div>
 
       <div class="contact-card">
-        <a href="https://youtube.com/@deafbiblicalministrydbm3242" target="_blank" aria-label="YouTube" viewBox="0 0 24 24">
+        <a href="https://youtube.com/@deafbiblicalministrydbm3242" target="_blank" aria-label="YouTube">
           <img
             src="assets/images/icon-youtube.png"
             alt="YouTube"
