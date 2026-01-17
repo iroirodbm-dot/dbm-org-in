@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Deaf Biblical Ministry | Empowering the Deaf Community in Nagaland</title>
+  <title>Deaf Biblical Ministry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -81,11 +81,23 @@
       align-items: center;
       padding: 1.2rem 2rem;
     }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
+   .logo {
+      display: flex;
+      align-items: center;
     }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .logo img {
+        height: 36px;
+      }
+    }
+    
     .nav-links a {
       margin-left: 2.5rem;
       color: var(--dark);
@@ -163,7 +175,13 @@
 
   <nav>
     <div class="nav-container container">
-      <div class="logo">DBM</div>
+      <div class="logo">
+        <a href="/">
+          <img src="assets/images/dbm-logo.png"
+               alt="Deaf Biblical Ministry logo">
+        </a>
+      </div>
+
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#impact">Impact</a>
