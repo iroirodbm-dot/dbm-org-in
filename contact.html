@@ -112,6 +112,9 @@
       text-align: center;
       box-shadow: 0 10px 40px rgba(0,0,0,0.08);
       transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .contact-card:hover {
@@ -143,20 +146,15 @@
     }
 
     .contact-card a:hover .contact-icon {
-      fill: var(--accent);
       transform: translateY(-2px);
+      opacity: 0.85;
     }
 
     .contact-card a {
       display: inline-block;
     }
 
-    .contact-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
+       
     /* Footer */
     footer {
       background: var(--dark);
@@ -224,6 +222,7 @@
           src="assets/images/icon-address.png"
           alt="Address"
           class="contact-icon"
+        />
         <h3>Address</h3>
         <p>
           Ward 10, Lane 3<br>
@@ -239,6 +238,7 @@
             src="assets/images/icon-email.png"
             alt="Email"
             class="contact-icon"
+          />
         </a>
         <h3>Email</h3>
         <p>hello@dbm.org.in</p>
@@ -250,6 +250,7 @@
             src="assets/images/icon-whatsapp.png"
             alt="WhatsApp"
             class="contact-icon"
+          />
         </a>
         <h3>WhatsApp</h3>
         <p>Message us directly</p>
@@ -261,7 +262,7 @@
             src="assets/images/icon-facebook.png"
             alt="Facebook"
             class="contact-icon"
-          >
+          />
         </a>
         <h3>Facebook</h3>
         <p>Follow our latest updates</p>
@@ -273,6 +274,7 @@
             src="assets/images/icon-instagram.png"
             alt="Instagram"
             class="contact-icon"
+          />
         </a>
         <h3>Instagram</h3>
         <p>Stories & Outreach</p>
@@ -284,6 +286,7 @@
             src="assets/images/icon-youtube.png"
             alt="YouTube"
             class="contact-icon"
+          />
         </a>
         <h3>YouTube</h3>
         <p>Watch our videos</p>
