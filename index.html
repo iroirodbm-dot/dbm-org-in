@@ -68,13 +68,17 @@
     /* Navbar */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #2f3e46;
       z-index: 1000;
       transition: background 0.4s;
     }
-    nav.scrolled { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    nav.scrolled {
+      background: #2f3e46;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
     .nav-container {
       display: flex;
       justify-content: space-between;
@@ -98,14 +102,17 @@
       }
     }
     
-    .nav-links a {
+   .nav-links a {
       margin-left: 2.5rem;
-      color: var(--dark);
+      color: #ffffff;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
-    .nav-links a:hover { color: var(--primary); }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
     /* Sections */
     section { padding: 8rem 0; }
