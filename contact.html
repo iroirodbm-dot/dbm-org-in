@@ -136,6 +136,23 @@
       color: var(--accent);
     }
 
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 1.2rem;
+      fill: var(--primary);
+      transition: fill 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-card a:hover .contact-icon {
+      fill: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-card a {
+      display: inline-block;
+    }
+    
     /* Footer */
     footer {
       background: var(--dark);
