@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/nav.css">
   <style>
     :root {
       --primary: #4a6fa5;       /* Soft blue - trust, calm */
@@ -65,55 +66,7 @@
     }
     .btn:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(212,163,115,0.35); background: #e0b88a; }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #2f3e46;
-      z-index: 1000;
-      transition: background 0.4s;
-    }
-    nav.scrolled {
-      background: #2f3e46;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-    }
-   .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 42px;
-      width: auto;
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .logo img {
-        height: 36px;
-      }
-    }
     
-   .nav-links a {
-      margin-left: 2.5rem;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
     /* Sections */
     section { padding: 8rem 0; }
     .about, .impact { background: white; }
@@ -178,27 +131,43 @@
     }
   </style>
 </head>
+
+  
 <body>
 
+  <!-- Shared Navbar -->
   <nav>
-    <div class="nav-container container">
-      <div class="logo">
-        <a href="index.html">
-          <img src="assets/images/dbm-logo.png"
-               alt="Deaf Biblical Ministry logo">
-        </a>
-      </div>
-
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#impact">Impact</a>
-        <a href="#programs">Programs</a>
-        <a href="#support">Support Us</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  <div class="nav-container container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/images/dbm-logo.png" alt="Deaf Biblical Ministry logo">
+      </a>
     </div>
-  </nav>
 
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#impact">Impact</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#support">Support Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu">
+    <a href="index.html#about">About</a>
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#programs">Programs</a>
+    <a href="index.html#support">Support Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+  
   <header class="hero">
     <div class="hero-content">
       <h1>Deaf Biblical Ministry</h1>
@@ -284,11 +253,7 @@
     </div>
   </footer>
 
-  <script>
-    // Simple scroll effect for navbar
-    window.addEventListener('scroll', () => {
-      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 100);
-    });
-  </script>
+  <script src="assets/js/nav.js" defer></script>
+   
 </body>
 </html>
