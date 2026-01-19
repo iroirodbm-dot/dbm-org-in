@@ -77,7 +77,7 @@
   width: 280px;
   height: 100vh;
 
-  background: rgba(47, 62, 70, 0.88); /* subtle translucency */
+  background: rgba(47, 62, 70, 0.70); /* subtle translucency */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
