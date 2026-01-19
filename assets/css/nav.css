@@ -34,17 +34,29 @@
       }
     }
     
-   .nav-links a {
-      margin-left: 2.5rem;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+   .nav-links {
+  display: flex;
+  align-items: stretch;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+
+  padding: 0 1.6rem;      /* horizontal clickable area */
+  height: 100%;           /* fill navbar height */
+
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+    
 
     .nav-links a:hover {
-      color: var(--accent);
+        background: rgba(255, 255, 255, 0.08);
+          color: var(--accent);
     }
 
     /* Hamburger button */
