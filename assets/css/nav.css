@@ -15,7 +15,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.6rem 2rem;
+      padding: 2.4rem 2rem;
     }
    .logo {
       display: flex;
@@ -23,14 +23,14 @@
     }
 
     .logo img {
-      height: 50px;
+      height: 64px;
       width: auto;
       display: block;
     }
 
     @media (max-width: 768px) {
       .logo img {
-        height: 44px;
+        height: 54px;
       }
     }
     
@@ -38,6 +38,7 @@
       margin-left: 2.5rem;
       color: #ffffff;
       text-decoration: none;
+      font-size: 1.05rem;
       font-weight: 500;
       transition: color 0.3s;
     }
