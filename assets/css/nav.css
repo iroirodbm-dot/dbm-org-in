@@ -5,7 +5,7 @@ nav {
   right: 0;
   background: #2f3e46;
   z-index: 1000;
-  transition: background 0.4s;
+  transition: background 0.4s, box-shadow 0.4s;
 }
 
 nav.scrolled {
@@ -13,15 +13,14 @@ nav.scrolled {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* NAV CONTAINER */
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
-  padding: 2.4rem 2rem;
+  align-items: center;
+  height: 96px;
+  padding: 0 2rem;
 }
 
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -33,24 +32,17 @@ nav.scrolled {
   display: block;
 }
 
-@media (max-width: 768px) {
-  .logo img {
-    height: 54px;
-  }
-}
-
-/* DESKTOP NAV LINKS */
 .nav-links {
   display: flex;
   height: 100%;
-  align-items: center;
 }
 
 .nav-links a {
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 100%;
   padding: 0 1.6rem;
-
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
@@ -62,7 +54,6 @@ nav.scrolled {
   color: var(--accent);
 }
 
-/* HAMBURGER BUTTON */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -81,18 +72,15 @@ nav.scrolled {
   transition: all 0.3s ease;
 }
 
-/* MOBILE MENU PANEL */
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
   width: 280px;
   height: 100vh;
-
   background: rgba(47, 62, 70, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
   padding: 6rem 2rem;
   display: flex;
   flex-direction: column;
@@ -102,7 +90,7 @@ nav.scrolled {
 }
 
 .mobile-menu a {
-  color: white;
+  color: #ffffff;
   font-size: 1.2rem;
   text-decoration: none;
 }
@@ -115,7 +103,6 @@ nav.scrolled {
   right: 0;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -123,5 +110,9 @@ nav.scrolled {
 
   .hamburger {
     display: flex;
+  }
+
+  .logo img {
+    height: 54px;
   }
 }
