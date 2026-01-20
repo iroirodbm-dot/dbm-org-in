@@ -104,6 +104,12 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
+
+  .nav-container {
+    height: 78px;
+    padding: 0 1.5rem;
+  }
+  
   .nav-links {
     display: none;
   }
