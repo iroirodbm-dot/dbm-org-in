@@ -78,7 +78,7 @@ nav.scrolled {
   right: -100%;
   width: 280px;
   height: 100vh;
-  background: rgba(47, 62, 70, 0.7);
+  background: rgba(74, 80, 99, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 6rem 2rem;
