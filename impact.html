@@ -326,23 +326,49 @@
     const slides = track.children;
     const prev = carousel.querySelector('.prev');
     const next = carousel.querySelector('.next');
+
     let index = 0;
+    let timer;
 
     function update() {
       track.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    next.onclick = () => {
+    function startAuto() {
+      timer = setInterval(() => {
+        index = (index + 1) % slides.length; // infinite loop
+        update();
+      }, 3000); // 3 seconds
+    }
+
+    function stopAuto() {
+      clearInterval(timer);
+    }
+
+    // Buttons
+    next.addEventListener('click', () => {
+      stopAuto();
       index = (index + 1) % slides.length;
       update();
-    };
+      startAuto();
+    });
 
-    prev.onclick = () => {
+    prev.addEventListener('click', () => {
+      stopAuto();
       index = (index - 1 + slides.length) % slides.length;
       update();
-    };
+      startAuto();
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+
+    // Start autoplay
+    startAuto();
   });
 </script>
+
 
 </body>
 </html>
