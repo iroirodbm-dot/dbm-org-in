@@ -364,6 +364,11 @@
 <script>
   const RAZORPAY_KEY = "rzp_test_XXXXXXXXXX"; // 🔵 TEST key for now
 
+  function restoreScroll() {
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+  }
+  
   function openRazorpay(amount, purpose, description) {
     const options = {
       key: RAZORPAY_KEY,
@@ -394,6 +399,10 @@
     };
 
     const rzp = new Razorpay(options);
+    rzp.on("payment.failed", function () {
+      restoreScroll();
+      alert("Payment failed or was cancelled. Please try again.");
+    });
     rzp.open();
   }
 </script>
