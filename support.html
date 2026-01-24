@@ -222,7 +222,7 @@
       <div class="support-card">
         <h3>Donate</h3>
         <p>Your contribution supports education, vocational training, healthcare, and daily care.</p>
-        <a href="#" class="btn">Donate Now</a>
+        <button class="btn" id="donateBtn">Donate Now</button>
       </div>
 
       <div class="support-card">
@@ -262,6 +262,46 @@
   </div>
 </section>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  const donateBtn = document.getElementById("donateBtn");
+
+  donateBtn.addEventListener("click", function () {
+    const options = {
+      key: "rzp_live_XXXXXXXXXXXXXX", // 🔴 REPLACE with your Razorpay LIVE key
+      amount: 100000, // Amount in paise (₹1000 = 100000)
+      currency: "INR",
+      name: "Deaf Biblical Ministry",
+      description: "General Donation",
+      image: "https://dbm.org.in/assets/images/dbm-logo.png", // absolute URL recommended
+      handler: function (response) {
+        alert(
+          "Thank you for your support!\n\nPayment ID: " +
+            response.razorpay_payment_id
+        );
+        // Later: save this payment ID for 80G receipt
+      },
+      prefill: {
+        name: "",
+        email: "",
+        contact: ""
+      },
+      notes: {
+        purpose: "General Donation",
+        ngo_80g: "Yes"
+      },
+      theme: {
+        color: "#4a6fa5"
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  });
+</script>
+
+  
 <script src="assets/js/nav.js" defer></script>
 
 </body>
