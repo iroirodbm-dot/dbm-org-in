@@ -138,6 +138,41 @@
       transform:translateY(-3px);
     }
 
+    /* Trust Indicators */
+.trust-section{
+  padding:3.5rem 0;
+  background:var(--light);
+}
+
+.trust-box{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:2rem;
+  background:white;
+  padding:2rem 2.4rem;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.trust-item{
+  font-weight:600;
+  color:var(--dark);
+  font-size:1.05rem;
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+}
+
+@media(max-width:768px){
+  .trust-box{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+
+
+    
     /* CTA */
     .final-cta{
       background:var(--primary);
