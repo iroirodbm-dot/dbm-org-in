@@ -266,13 +266,13 @@
       <div class="support-card">
         <h3>Sponsor a Student</h3>
         <p>Provide long-term educational and residential support to a Deaf child.</p>
-        <a href="mailto:sponsor.student@dbm.org.in" class="btn">Sponsor</a>
+        <button class="btn" id="sponsorStudentBtn">Sponsor</button>
       </div>
 
       <div class="support-card">
         <h3>Sponsor a Meal</h3>
         <p>Celebrate a special occasion by sponsoring a nutritious meal for students.</p>
-        <a href="mailto:sponsor.meal@dbm.org.in" class="btn">Sponsor</a>
+        <button class="btn" id="sponsorMealBtn">Sponsor</button>
       </div>
 
       <div class="support-card">
@@ -318,22 +318,21 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
-  const donateBtn = document.getElementById("donateBtn");
+  const RAZORPAY_KEY = "rzp_test_XXXXXXXXXX"; // 🔵 TEST key for now
 
-  donateBtn.addEventListener("click", function () {
+  function openRazorpay(amount, purpose, description) {
     const options = {
-      key: "rzp_live_XXXXXXXXXXXXXX", // 🔴 REPLACE with your Razorpay LIVE key
-      amount: 100000, // Amount in paise (₹1000 = 100000)
+      key: RAZORPAY_KEY,
+      amount: amount, // in paise
       currency: "INR",
       name: "Deaf Biblical Ministry",
-      description: "General Donation",
-      image: "https://dbm.org.in/assets/images/dbm-logo.png", // absolute URL recommended
+      description: description,
+      image: "https://dbm.org.in/assets/images/dbm-logo.png",
       handler: function (response) {
         alert(
           "Thank you for your support!\n\nPayment ID: " +
-            response.razorpay_payment_id
+          response.razorpay_payment_id
         );
-        // Later: save this payment ID for 80G receipt
       },
       prefill: {
         name: "",
@@ -341,8 +340,9 @@
         contact: ""
       },
       notes: {
-        purpose: "General Donation",
-        ngo_80g: "Yes"
+        purpose: purpose,
+        ngo: "DBM",
+        eligibility: "80G"
       },
       theme: {
         color: "#4a6fa5"
@@ -351,8 +351,39 @@
 
     const rzp = new Razorpay(options);
     rzp.open();
+  }
+</script>
+
+  <script>
+  // Donate (₹1000 default)
+  document.getElementById("donateBtn").addEventListener("click", function () {
+    openRazorpay(
+      100000,
+      "General Donation",
+      "General Donation to DBM"
+    );
+  });
+
+  // Sponsor a Student (₹24,000 example)
+  document.getElementById("sponsorStudentBtn").addEventListener("click", function () {
+    openRazorpay(
+      2400000,
+      "Sponsor a Student",
+      "Student Education & Residential Support"
+    );
+  });
+
+  // Sponsor a Meal (₹2,000 example)
+  document.getElementById("sponsorMealBtn").addEventListener("click", function () {
+    openRazorpay(
+      200000,
+      "Sponsor a Meal",
+      "Nutritious Meal for Deaf Students"
+    );
   });
 </script>
+
+
 
   
 <script src="assets/js/nav.js" defer></script>
