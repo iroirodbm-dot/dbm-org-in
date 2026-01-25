@@ -53,6 +53,7 @@
       margin-top: 0.5rem;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 1rem;
     }
 
     button {
@@ -71,6 +72,10 @@
       background: #3b5f8f;
     }
 
+    .hidden {
+      display: none;
+    }
+
     .note {
       text-align: center;
       margin-top: 1.5rem;
@@ -82,6 +87,7 @@
 
 <body>
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">DBM</a>
@@ -92,23 +98,87 @@
     </div>
   </header>
 
+  <!-- LOGIN BOX -->
   <div class="login-box">
     <h1>Parent Login</h1>
 
-    <form>
-      <label>Email Address</label>
-      <input type="email" placeholder="parent@email.com" required>
+    <!-- PHONE INPUT -->
+    <div id="phone-section">
+      <label>Mobile Number</label>
+      <input type="tel" id="phoneNumber" placeholder="+91XXXXXXXXXX">
 
-      <label>Password</label>
-      <input type="password" placeholder="••••••••" required>
+      <button onclick="sendOTP()">Send OTP</button>
+    </div>
 
-      <button type="submit">Login</button>
-    </form>
+    <!-- OTP INPUT -->
+    <div id="otp-section" class="hidden">
+      <label>Enter OTP</label>
+      <input type="text" id="otp" placeholder="6-digit OTP">
+
+      <button onclick="verifyOTP()">Verify & Login</button>
+    </div>
+
+    <!-- Firebase reCAPTCHA -->
+    <div id="recaptcha-container"></div>
 
     <div class="note">
-      Secure access for parents & guardians
+      Secure login using your registered mobile number
     </div>
   </div>
+
+  <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    // 🔐 Firebase config (replace with your own)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+
+    // Setup reCAPTCHA
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      'recaptcha-container',
+      { size: 'invisible' }
+    );
+
+    function sendOTP() {
+      const phoneNumber = document.getElementById("phoneNumber").value;
+
+      auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+        .then(confirmationResult => {
+          window.confirmationResult = confirmationResult;
+          document.getElementById("phone-section").classList.add("hidden");
+          document.getElementById("otp-section").classList.remove("hidden");
+          alert("OTP sent successfully");
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById("otp").value;
+
+      window.confirmationResult.confirm(otp)
+        .then(result => {
+          // ✅ Login success
+          window.location.href = "parent-dashboard.html";
+        })
+        .catch(error => {
+          alert("Invalid OTP");
+        });
+    }
+  </script>
 
 </body>
 </html>
