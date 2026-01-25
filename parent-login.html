@@ -90,58 +90,58 @@
 
   <script>
     const firebaseConfig = {
-    apiKey: "AIzaSyAjLfCzHRORNxrT8Nzap1MrWk-XnUeQzHU",
-    authDomain: "dbm-school.firebaseapp.com",
-    projectId: "dbm-school",
-    storageBucket: "dbm-school.firebasestorage.app",
-    messagingSenderId: "725058333040",
-    appId: "1:725058333040:web:65f9ed3facbc373637c7b5"
-  };
+      apiKey: "AIzaSyAjLfCzHRORNxrT8Nzap1MrWk-XnUeQzHU",
+      authDomain: "dbm-school.firebaseapp.com",
+      projectId: "dbm-school",
+      storageBucket: "dbm-school.appspot.com",
+      messagingSenderId: "725058333040",
+      appId: "1:725058333040:web:65f9ed3facbc373637c7b5"
+    };
 
     firebase.initializeApp(firebaseConfig);
-
     const auth = firebase.auth();
 
-    // Setup reCAPTCHA
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-  'recaptcha-container',
-  {
-    size: 'invisible',
-    callback: () => {
-      sendOTP();
+    window.onload = () => {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        'recaptcha-container',
+        {
+          size: 'invisible'
+        }
+      );
+      window.recaptchaVerifier.render();
     }
-  }
-);
 
-recaptchaVerifier.render();
+    function sendOTP() {
+      let phoneNumber = document.getElementById("phoneNumber").value.trim();
 
+      if (!phoneNumber.startsWith("+")) {
+        alert("Please enter number with country code (e.g. +91XXXXXXXXXX)");
+        return;
+      }
 
-   function sendOTP() {
-  let phoneNumber = document.getElementById("phoneNumber").value.trim();
-
-  if (!phoneNumber.startsWith("+")) {
-    alert("Please enter number with country code (e.g. +91XXXXXXXXXX)");
-    return;
-  }
-
-  auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-    .then(confirmationResult => {
-      window.confirmationResult = confirmationResult;
-      document.getElementById("phone-section").classList.add("hidden");
-      document.getElementById("otp-section").classList.remove("hidden");
-      alert("OTP sent successfully");
-    })
-    .catch(error => {
-      alert(error.message);
-    });
-}
+      auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+        .then(confirmationResult => {
+          window.confirmationResult = confirmationResult;
+          document.getElementById("phone-section").classList.add("hidden");
+          document.getElementById("otp-section").classList.remove("hidden");
+          alert("OTP sent successfully");
+        })
+        .catch(error => {
+          alert(error.message);
+          grecaptcha.reset(); // reset reCAPTCHA on failure
+        });
+    }
 
     function verifyOTP() {
-      const otp = document.getElementById("otp").value;
+      const otp = document.getElementById("otp").value.trim();
+
+      if (otp.length !== 6) {
+        alert("Enter a valid 6-digit OTP");
+        return;
+      }
 
       window.confirmationResult.confirm(otp)
         .then(result => {
-          // ✅ Login success
           window.location.href = "parent-dashboard.html";
         })
         .catch(error => {
@@ -149,63 +149,56 @@ recaptchaVerifier.render();
         });
     }
   </script>
-  
+
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
   <nav>
-  <div class="nav-container container">
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/images/dbm-logo.png" alt="Deaf Biblical Ministry logo">
-      </a>
+    <div class="nav-container container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/dbm-logo.png" alt="Deaf Biblical Ministry logo">
+        </a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="impact.html">Impact</a>
+        <a href="programs.html">Programs</a>
+        <a href="support.html">Support Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <button class="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <div class="nav-links">
+    <div class="mobile-menu">
       <a href="index.html#about">About</a>
       <a href="impact.html">Impact</a>
       <a href="programs.html">Programs</a>
       <a href="support.html">Support Us</a>
       <a href="contact.html">Contact</a>
     </div>
+  </nav>
 
-    <button class="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <div class="mobile-menu">
-    <a href="index.html#about">About</a>
-    <a href="impact.html">Impact</a>
-    <a href="programs.html">Programs</a>
-    <a href="support.html">Support Us</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-  <!-- LOGIN BOX -->
   <div class="login-box">
     <h1>Parent Login</h1>
 
-    <!-- PHONE INPUT -->
     <div id="phone-section">
       <label>Mobile Number</label>
       <input type="tel" id="phoneNumber" placeholder="+91XXXXXXXXXX">
-
       <button onclick="sendOTP()">Send OTP</button>
     </div>
 
-    <!-- OTP INPUT -->
     <div id="otp-section" class="hidden">
       <label>Enter OTP</label>
       <input type="text" id="otp" placeholder="6-digit OTP">
-
       <button onclick="verifyOTP()">Verify & Login</button>
     </div>
 
-    <!-- Firebase reCAPTCHA -->
     <div id="recaptcha-container"></div>
 
     <div class="note">
@@ -214,6 +207,6 @@ recaptchaVerifier.render();
   </div>
 
   <script src="assets/js/nav.js" defer></script>
-      
+
 </body>
 </html>
