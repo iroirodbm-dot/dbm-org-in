@@ -100,6 +100,7 @@
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    auth.useEmulator('http://127.0.0.1:4000/');
 
     window.onload = () => {
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
