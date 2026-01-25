@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="en">
 
 <head>
@@ -34,7 +34,7 @@
       font-family: 'Inter', sans-serif;
       background: var(--light);
       color: var(--dark);
-      padding-top: 52px;
+      padding-top: 60px;
       line-height: 1.65;
     }
 
@@ -153,36 +153,41 @@
       background: #3b5f8f;
       transform:translateY(-3px);
     }
+
+    .logo img {
+      height: 50px;
+      display: block;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR (same as other pages) -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-container">
-      <a href="index.html#about">About</a>
-      <nav>
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="DBM Logo">
+      </a>
+      <nav class="nav-links">
         <a href="impact.html">Impact</a>
         <a href="programs.html">Programs</a>
         <a href="academics.html">Academics</a>
         <a href="support.html">Support</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <button class="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
-
-  <button class="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
 
   <div class="mobile-menu">
     <a href="index.html#about">About</a>
     <a href="impact.html">Impact</a>
     <a href="programs.html">Programs</a>
     <a href="academics.html">Academics</a>
-    <a href="support.html">Support Us</a>
+    <a href="support.html">Support</a>
     <a href="contact.html">Contact</a>
   </div>
   
