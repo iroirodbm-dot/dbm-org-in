@@ -83,6 +83,73 @@
       font-size: 0.9rem;
     }
   </style>
+
+  <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyAjLfCzHRORNxrT8Nzap1MrWk-XnUeQzHU",
+    authDomain: "dbm-school.firebaseapp.com",
+    projectId: "dbm-school",
+    storageBucket: "dbm-school.firebasestorage.app",
+    messagingSenderId: "725058333040",
+    appId: "1:725058333040:web:65f9ed3facbc373637c7b5"
+  };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+
+    // Setup reCAPTCHA
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+  'recaptcha-container',
+  {
+    size: 'invisible',
+    callback: () => {
+      sendOTP();
+    }
+  }
+);
+
+recaptchaVerifier.render();
+
+
+   function sendOTP() {
+  let phoneNumber = document.getElementById("phoneNumber").value.trim();
+
+  if (!phoneNumber.startsWith("+")) {
+    alert("Please enter number with country code (e.g. +91XXXXXXXXXX)");
+    return;
+  }
+
+  auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+    .then(confirmationResult => {
+      window.confirmationResult = confirmationResult;
+      document.getElementById("phone-section").classList.add("hidden");
+      document.getElementById("otp-section").classList.remove("hidden");
+      alert("OTP sent successfully");
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+}
+
+    function verifyOTP() {
+      const otp = document.getElementById("otp").value;
+
+      window.confirmationResult.confirm(otp)
+        .then(result => {
+          // ✅ Login success
+          window.location.href = "parent-dashboard.html";
+        })
+        .catch(error => {
+          alert("Invalid OTP");
+        });
+    }
+  </script>
+  
 </head>
 
 <body>
@@ -147,60 +214,6 @@
   </div>
 
   <script src="assets/js/nav.js" defer></script>
-  
-  <!-- FIREBASE SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-  <script>
-    const firebaseConfig = {
-    apiKey: "AIzaSyAjLfCzHRORNxrT8Nzap1MrWk-XnUeQzHU",
-    authDomain: "dbm-school.firebaseapp.com",
-    projectId: "dbm-school",
-    storageBucket: "dbm-school.firebasestorage.app",
-    messagingSenderId: "725058333040",
-    appId: "1:725058333040:web:65f9ed3facbc373637c7b5"
-  };
-
-    firebase.initializeApp(firebaseConfig);
-
-    const auth = firebase.auth();
-
-    // Setup reCAPTCHA
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      'recaptcha-container',
-      { size: 'invisible' }
-    );
-
-    function sendOTP() {
-      const phoneNumber = document.getElementById("phoneNumber").value;
-
-      auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-        .then(confirmationResult => {
-          window.confirmationResult = confirmationResult;
-          document.getElementById("phone-section").classList.add("hidden");
-          document.getElementById("otp-section").classList.remove("hidden");
-          alert("OTP sent successfully");
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    }
-
-    function verifyOTP() {
-      const otp = document.getElementById("otp").value;
-
-      window.confirmationResult.confirm(otp)
-        .then(result => {
-          // ✅ Login success
-          window.location.href = "parent-dashboard.html";
-        })
-        .catch(error => {
-          alert("Invalid OTP");
-        });
-    }
-  </script>
-
-   
+      
 </body>
 </html>
